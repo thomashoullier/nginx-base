@@ -1,5 +1,6 @@
 server {
   listen 443 ssl;
+  listen [::]:443 ssl;
   server_name xxxxx.xxx;
   
   # Must be set if you want to allow clients to send larger files to your
@@ -8,5 +9,5 @@ server {
 
   # If you don't want to serve a site, comment this out
   root /var/www/html;
-  index index.html index.htm;
+  index index.html index.htm index.nginx-debian.html;
 }

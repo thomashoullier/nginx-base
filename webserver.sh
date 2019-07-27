@@ -5,9 +5,11 @@
 # 1: user@IP
 # 2: domain name in the form: "example.com"
 
-ssh -t "$1" \
-'sudo ufw allow 80; sudo ufw allow 443;'\
-'sudo apt install nginx python-certbot-nginx;'
-
 # Upload the nginx configuration file and HTML test page."
 scp nginx-conf testpage.html "$1":~/
+
+ssh -t "$1" \
+'sudo ufw allow 80; sudo ufw allow 443;'\
+'sudo apt install nginx python-certbot-nginx;'\
+'sudo rm /etc/nginx/sites-enabled/*;'\
+'sudo mv testpage.html /var/www/html/;'
