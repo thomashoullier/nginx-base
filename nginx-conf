@@ -1,4 +1,10 @@
 server {
+     listen 80;
+     server_name xxxxx.xxx;
+     return 301 https://$server_name$request_uri;
+}
+
+server {
   listen 443 ssl;
   listen [::]:443 ssl;
   server_name xxxxx.xxx;

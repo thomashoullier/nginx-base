@@ -12,5 +12,9 @@ ssh -t "$1" \
 'sudo ufw allow 80; sudo ufw allow 443; sudo ufw reload;'\
 'sudo apt install nginx python-certbot-nginx;'\
 'sudo rm /etc/nginx/sites-enabled/*;'\
-'sudo mv testpage.html /var/www/html/;'
-
+'sudo mv testpage.html /var/www/html/;'\
+'sed -i -e "s/xxxxx.xxx/'"$2"'/g" nginx-conf;'\
+'sudo mv nginx-conf /etc/nginx/sites-available/'"$2"';'\
+'sudo ln -s /etc/nginx/sites-available/'"$2"' /etc/nginx/sites-enabled/;'\
+'sudo certbot --nginx;'\
+'sudo systemctl reload nginx;'
