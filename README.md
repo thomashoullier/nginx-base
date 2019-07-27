@@ -5,6 +5,10 @@ certificates from Let's Encrypt and automatic renewal using `certbot`.
 This works for Ubuntu 18.04 servers.
 
 ## Usage
+Familiarity with `nginx` and `certbot` is expected. The script merely automates
+what a human administrator would do to setup these tools. Things can go wrong
+and you need to be able to detect when this is the case.
+
 ### Pre-requisites
 You need:
 - A working server, typically setup with
@@ -21,3 +25,19 @@ that your TLS certificates should come from a particular certificate provider.
 To specify Let's Encrypt as certificate issuer, enter `letsencrypt.org` in the 
 CAA record.
 
+### Launching the script
+Switch to the folder in which `webserver.sh` is and run:
+
+```shell
+./webserver.sh mario@192.168.0.1 xxxxx.xxx
+```
+
+Replacing:
+* *mario@192.168.0.1* with the adequate user and IP.
+* *xxxxx.xxx* with the adequate domain name.
+
+## Test
+- If you go to `xxxxx.xxx/testpage.html` you should see the html test page. You
+should also have been automatically redirected to HTTPS.
+- On your server, you can run `sudo certbot renew --dry-run` to make sure the
+automatic certificates renewal will work when the time comes.
