@@ -2,6 +2,8 @@
 We give a POSIX shellscript to setup a basic `nginx` webserver with TLS
 certificates from Let's Encrypt and automatic renewal using `certbot`.
 
+This works for Ubuntu 18.04 servers.
+
 ## Usage
 ### Pre-requisites
 You need:
