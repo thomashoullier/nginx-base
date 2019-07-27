@@ -9,7 +9,8 @@
 scp nginx-conf testpage.html "$1":~/
 
 ssh -t "$1" \
-'sudo ufw allow 80; sudo ufw allow 443;'\
+'sudo ufw allow 80; sudo ufw allow 443; sudo ufw reload;'\
 'sudo apt install nginx python-certbot-nginx;'\
 'sudo rm /etc/nginx/sites-enabled/*;'\
 'sudo mv testpage.html /var/www/html/;'
+
